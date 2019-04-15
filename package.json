@@ -1,33 +1,33 @@
 {
-  "name": "PartyPlanner",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/partyplannerlambda/Backend.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/partyplannerlambda/Backend/issues"
-  },
-  "homepage": "https://github.com/partyplannerlambda/Backend#readme",
-  "devDependencies": {
-    "nodemon": "^1.18.11"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
-    "express": "^4.16.4",
-    "helmet": "^3.16.0",
-    "jsonwebtoken": "^8.5.1",
-    "knex": "^0.16.5",
-    "sqlite3": "^4.0.6"
-  }
+	"name": "PartyPlanner",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"server": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/partyplannerlambda/Backend.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/partyplannerlambda/Backend/issues"
+	},
+	"homepage": "https://github.com/partyplannerlambda/Backend#readme",
+	"devDependencies": {
+		"nodemon": "^1.18.11"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"cors": "^2.8.5",
+		"dotenv": "^7.0.0",
+		"express": "^4.16.4",
+		"helmet": "^3.16.0",
+		"jsonwebtoken": "^8.5.1",
+		"knex": "^0.16.5",
+		"sqlite3": "^4.0.6"
+	}
 }
