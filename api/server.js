@@ -19,4 +19,6 @@ server.get('/', (req, res) => {
 	res.send("It's alive!");
 });
 
+// Just a comment
+
 module.exports = server;
