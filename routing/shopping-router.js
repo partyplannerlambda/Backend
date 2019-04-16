@@ -14,14 +14,15 @@ router.get('/', async (req, res) => {
 	}
 });
 
-// GET --> /parties/:id/shopping/:id
+// // GET --> /parties/:id/shopping/:id
 router.get('/:id', async (req, res) => {
+  const partyID = req.id;
   try {
     const item = await Shopping.findById(req.params.id);
-    if (item) {
+    if (item && `${item.party_id}` === partyID) {
       res.status(200).json(item);
     } else {
-      res.status(404).json({ message: 'Item does not exist' });
+      res.status(404).json({ message: 'Item not found' });
     }
   } catch (error) {
     console.log(error)

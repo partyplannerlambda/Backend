@@ -9,10 +9,6 @@ module.exports = {
 	update
 };
 
-// function find() {
-// 	return db('shopping_list');
-// }
-
 function find(id) {
   const party_id = id;
   return db('shopping_list')
