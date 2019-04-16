@@ -5,7 +5,8 @@ const Shopping = require('../data/models/shopping-model.js');
 // GET --> /parties/:id/shopping
 router.get('/', async (req, res) => {
 	try {
-		const list = await Shopping.find();
+    const list = await Shopping.find(req.id);
+    console.log('PARMS: ', req.id);
 		res.status(200).json(list);
 	} catch (err) {
 		console.log(err);
