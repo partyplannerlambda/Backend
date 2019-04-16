@@ -12,15 +12,15 @@ module.exports = {
 function find(id) {
   const party_id = id;
   return db('shopping_list')
-    .where({party_id});
+    .where({ party_id });
 }
 
 function findBy(filter) {
 	return db('shopping_list').where(filter);
 }
 
-async function add(list) {
-	const [ id ] = await db('shopping_list').insert(list);
+async function add(item) {
+	const [ id ] = await db('shopping_list').insert(item);
 
 	return findById(id);
 }
