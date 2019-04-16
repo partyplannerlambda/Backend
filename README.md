@@ -3,7 +3,7 @@
 https://party-planner-backend.herokuapp.com/
 
 | Authentication Endpoints|
-
+------ | ------
 | https://party-planner-backend.herokuapp.com/register |
 | POST | username, password |
 
@@ -13,7 +13,7 @@ https://party-planner-backend.herokuapp.com/
 
 
 | Party Endpoints |
-
+---------- | -----------
 | https://party-planner-backend.herokuapp.com/parties |
 | POST | party_name, n_of_guests, date, theme, budget, user_id |
 | GET | /parties |
@@ -23,7 +23,7 @@ https://party-planner-backend.herokuapp.com/
 
 
 | Shopping List Endpoints |
-
+--------- | ----------
 | https://party-planner-backend.herokuapp.com/parties/:id/shopping |
 | item, purchased(bool), price, party_id  |
 | POST | /parties/:id/shopping |
@@ -34,7 +34,7 @@ https://party-planner-backend.herokuapp.com/
 
 
 | To do List Endpoints |
-
+-------------- | ----------------------
 | https://party-planner-backend.herokuapp.com/parties/:id/todo |
 | item, completed(bool), party_id  |
 | POST | /parties/:id/todo |
