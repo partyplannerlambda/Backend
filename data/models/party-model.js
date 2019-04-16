@@ -4,7 +4,9 @@ module.exports = {
 	add,
 	find,
 	findBy,
-	findById
+	findById,
+	remove,
+	update
 };
 
 function find() {
@@ -23,4 +25,12 @@ async function add(party) {
 
 function findById(id) {
 	return db('party').where({ id }).first();
+}
+
+function remove(id) {
+	return db('party').where({ id }).del();
+}
+
+function update(id, changes) {
+	return db('party').where({ id }).update(changes, '*');
 }
