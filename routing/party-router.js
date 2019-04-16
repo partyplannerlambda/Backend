@@ -13,6 +13,21 @@ router.get('/', async (req, res) => {
 	}
 });
 
+// GET --> /parties/id
+router.get('/:id', async (req, res) => {
+  try {
+    const party = await Parties.findById(req.params.id);
+    if (party) {
+      res.status(200).json(party);
+    } else {
+      res.status(404).json({ message: 'Party not found' });
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ Error: `${error}` });
+  }
+}); 
+
 // POST --> /parties
 router.post('/', async (req, res) => {
 	try {
