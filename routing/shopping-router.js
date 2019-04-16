@@ -19,11 +19,9 @@ router.get('/:id', async (req, res) => {
   const partyID = req.id;
   try {
     const item = await Shopping.findById(req.params.id);
-    if (item && `${item.party_id}` === partyID) {
-      res.status(200).json(item);
-    } else {
-      res.status(404).json({ message: 'Item not found' });
-    }
+    item && `${item.party_id}` === partyID
+      ? res.status(200).json(item)
+      : res.status(404).json({ message: 'Item not found' });
   } catch (error) {
     console.log(error)
     res.status(500).json({ Error: `${error}` });
@@ -32,9 +30,12 @@ router.get('/:id', async (req, res) => {
 
 // POST --> /parties/:id/shopping
 router.post('/', async (req, res) => {
+  const partyID = req.id;
 	try {
-		const item = await Shopping.add(req.body);
-		res.status(201).json(item);
+    const item = await Shopping.add(req.body);
+    item && `${item.party_id}` === partyID
+      ? res.status(201).json(item)
+      : res.status(403).json({ message: 'Denied: Invalid Item' });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -43,26 +44,29 @@ router.post('/', async (req, res) => {
 
 // PUT --> /parties/:id/shopping/:id
 router.put('/:id', async (req, res) => {
+  req.id !== req.body.party_id
+    ? res.status(403).json({ message: 'Denied: Invalid Item' })
+    : null;
 	try {
-		const item = await Shopping.update(req.params.id, req.body);
-		if (item) {
-			res.status(200).json({ message: 'Item updated' });
-		} else {
-			res.status(404).json({ message: 'Item could not be found' });
-		}
+    const item = await Shopping.update(req.params.id, req.body);
+		item
+			? res.status(200).json({ message: 'Item updated' })
+			: res.status(400).json({ message: 'Bad Request' });
 	} catch (err) {
+    console.log(err);
 		res.status(500).json(err);
 	}
 });
 
 // DELETE --> /parties/:id/shopping/:id
 router.delete('/:id', async (req, res) => {
+  console.log(req.params.id);
 	try {
 		const count = await Shopping.remove(req.params.id);
 		if (count > 0) {
 			res.status(200).json({ message: 'Item deleted' });
 		} else {
-			res.status(404).json({ message: 'Unable to find item' });
+			res.status(404).json({ message: 'Item does not exist' });
 		}
 	} catch (err) {
 		res.status(500).json(err);

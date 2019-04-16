@@ -34,5 +34,5 @@ function remove(id) {
 }
 
 function update(id, changes) {
-	return db('shopping_list').where({ id }).update(changes, '*');
+	return db('shopping_list').where({ id }).update(changes);
 }
