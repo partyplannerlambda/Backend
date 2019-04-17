@@ -16,13 +16,25 @@ server.use(cors());
 
 server.use('/auth', authRouter);
 server.use('/parties', restricted, partyRouter);
-server.use('/parties/:id/shopping/', restricted, (req, res, next) => {
+server.use(
+	'/parties/:id/shopping/',
+	restricted,
+	(req, res, next) => {
 		req.id = req.params.id;
 		next();
 	},
-	shoppingRouter);
-	
-server.use('/parties/:id/todo/', restricted, todoRouter);
+	shoppingRouter
+);
+
+server.use(
+	'/parties/:id/todo/',
+	restricted,
+	(req, res, next) => {
+		req.id = req.params.id;
+		next();
+	},
+	todoRouter
+);
 
 server.get('/', (req, res) => {
 	res.send("It's alive!");
