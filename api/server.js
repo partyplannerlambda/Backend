@@ -3,7 +3,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const authRouter = require('../routing/auth-router');
-const userRouter = require('../routing/user-router');
 const partyRouter = require('../routing/party-router');
 const shoppingRouter = require('../routing/shopping-router');
 const todoRouter = require('../routing/todo-router');
@@ -16,7 +15,6 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/auth', authRouter);
-server.use('/users', restricted, userRouter);
 server.use('/parties', restricted, partyRouter);
 server.use(
 	'/parties/:id/shopping/',
