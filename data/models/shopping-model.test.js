@@ -56,11 +56,24 @@ describe('shopping-model.js', () => {
 
   describe('remove()', () => {
 
-    it('Should return a list of shopping items for the specified party_id', async () => {
-      // const items = await shoppingModel.find(1);
-
-      // expect(items.length).toBeGreaterThan(0);
-      // expect(Array.isArray(items)).toBeTruthy();
+    it('Should remove the item with the specified ID', async () => {
+      const item_id = 2;
+  
+      const deleted = await shoppingModel.remove(item_id);
+      console.log(deleted);
+  
+      expect(deleted).toBeTruthy();
+    });
+    
+    it('Should remove only one item', async () => {
+      const party_id = 1;
+      const item_id = 10;
+  
+      const before = await shoppingModel.find(party_id);
+      await shoppingModel.remove(item_id);
+      const after = await shoppingModel.find(party_id);
+  
+      expect(after.length).toBe(before.length - 1);
     });
     
   })
