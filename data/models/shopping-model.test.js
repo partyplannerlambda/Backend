@@ -56,35 +56,44 @@ describe('shopping-model.js', () => {
 
   describe('remove()', () => {
 
-    it('Should remove the item with the specified ID', async () => {
-      const item_id = 2;
+    // it('Should remove the item with the specified ID', async () => {
+    //   const item_id = 2;
   
-      const deleted = await shoppingModel.remove(item_id);
-      console.log(deleted);
+    //   const deleted = await shoppingModel.remove(item_id);
   
-      expect(deleted).toBeTruthy();
-    });
+    //   expect(deleted).toBeTruthy();
+    // });
     
-    it('Should remove only one item', async () => {
-      const party_id = 1;
-      const item_id = 10;
+    // it('Should remove only one item', async () => {
+    //   const party_id = 1;
+    //   const item_id = 10;
   
-      const before = await shoppingModel.find(party_id);
-      await shoppingModel.remove(item_id);
-      const after = await shoppingModel.find(party_id);
+    //   const before = await shoppingModel.find(party_id);
+    //   await shoppingModel.remove(item_id);
+    //   const after = await shoppingModel.find(party_id);
   
-      expect(after.length).toBe(before.length - 1);
-    });
+    //   expect(after.length).toBe(before.length - 1);
+    // });
     
   })
 
   describe('update()', () => {
 
-    it('Should return a list of shopping items for the specified party_id', async () => {
-      // const items = await shoppingModel.find(1);
+    it('Should return return 1/truthy', async () => {
+      const id = 1;
+      const changes = { party_id: 1, item: 'ice cream', purchased: false, price: 20 };
 
-      // expect(items.length).toBeGreaterThan(0);
-      // expect(Array.isArray(items)).toBeTruthy();
+      const updated = await shoppingModel.update(id, changes);
+      expect(updated).toBeTruthy();
+    });
+
+    it('Should update the specified item', async () => {
+      const id = 1;
+      const changes = { party_id: 1, item: 'prizes', purchased: false, price: 20 };
+
+      await shoppingModel.update(id, changes);
+      const newItem = await shoppingModel.findById(id);
+      expect(newItem.item).toBe(changes.item);
     });
     
   })
