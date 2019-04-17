@@ -4,9 +4,9 @@ https://party-planner-backend.herokuapp.com/
 
  Authentication Endpoints | .
 ------ | ------
- https://party-planner-backend.herokuapp.com/register | .
+ https://party-planner-backend.herokuapp.com/auth/register | .
  POST | username, password 
- https://party-planner-backend.herokuapp.com/login | .
+ https://party-planner-backend.herokuapp.com/auth/login | .
  POST | username, password
  Response | username, userId, token 
 
