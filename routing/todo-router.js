@@ -43,7 +43,7 @@ router.put('/:id', async (req, res) => {
 	try {
 		const todo = await Todo.update(req.params.id, req.body);
 		if (todo) {
-			res.status(200).json({ message: 'To do item updated' });
+			res.status(200).json(todo);
 		} else {
 			res.status(404).json({ message: 'To do item could not be found' });
 		}
