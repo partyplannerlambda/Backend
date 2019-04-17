@@ -6,6 +6,7 @@ const Shopping = require('../data/models/shopping-model.js');
 router.get('/', async (req, res) => {
 	try {
     const list = await Shopping.find(req.id);
+    console.log('PARMS: ', req.id);
 		res.status(200).json(list);
 	} catch (err) {
 		console.log(err);
@@ -43,14 +44,14 @@ router.post('/', async (req, res) => {
 
 // PUT --> /parties/:id/shopping/:id
 router.put('/:id', async (req, res) => {
-  req.id != req.body.party_id
+  req.id !== req.body.party_id
     ? res.status(403).json({ message: 'Denied: Invalid Item' })
     : null;
 	try {
     const item = await Shopping.update(req.params.id, req.body);
 		item
-			? res.status(200).json(item)
-      : res.status(400).json({ message: 'Bad Request' });
+			? res.status(200).json({ message: 'Item updated' })
+			: res.status(400).json({ message: 'Bad Request' });
 	} catch (err) {
     console.log(err);
 		res.status(500).json(err);
