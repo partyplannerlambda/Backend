@@ -56,24 +56,26 @@ describe('shopping-model.js', () => {
 
   describe('remove()', () => {
 
-    // it('Should remove the item with the specified ID', async () => {
-    //   const item_id = 2;
+    // ----- THESE ARE BEING SKIPPED -----
+
+    it.skip('Should remove the item with the specified ID', async () => {
+      const item_id = 2;
   
-    //   const deleted = await shoppingModel.remove(item_id);
+      const deleted = await shoppingModel.remove(item_id);
   
-    //   expect(deleted).toBeTruthy();
-    // });
+      expect(deleted).toBeTruthy();
+    });
     
-    // it('Should remove only one item', async () => {
-    //   const party_id = 1;
-    //   const item_id = 10;
+    it.skip('Should remove only one item', async () => {
+      const party_id = 1;
+      const item_id = 10;
   
-    //   const before = await shoppingModel.find(party_id);
-    //   await shoppingModel.remove(item_id);
-    //   const after = await shoppingModel.find(party_id);
+      const before = await shoppingModel.find(party_id);
+      await shoppingModel.remove(item_id);
+      const after = await shoppingModel.find(party_id);
   
-    //   expect(after.length).toBe(before.length - 1);
-    // });
+      expect(after.length).toBe(before.length - 1);
+    });
     
   })
 
