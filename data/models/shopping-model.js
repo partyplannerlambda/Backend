@@ -14,10 +14,6 @@ function find(id) {
     .where({ party_id });
 }
 
-// function findBy(filter) {
-// 	return db('shopping_list').where(filter);
-// }
-
 async function add(item) {
 	const [ id ] = await db('shopping_list').insert(item);
 
