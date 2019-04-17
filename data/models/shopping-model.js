@@ -3,7 +3,6 @@ const db = require('../dbConfig.js');
 module.exports = {
 	add,
 	find,
-	findBy,
 	findById,
 	remove,
 	update
@@ -15,9 +14,9 @@ function find(id) {
     .where({ party_id });
 }
 
-function findBy(filter) {
-	return db('shopping_list').where(filter);
-}
+// function findBy(filter) {
+// 	return db('shopping_list').where(filter);
+// }
 
 async function add(item) {
 	const [ id ] = await db('shopping_list').insert(item);
@@ -34,5 +33,10 @@ function remove(id) {
 }
 
 function update(id, changes) {
-	return db('shopping_list').where({ id }).update(changes);
+  return db('shopping_list')
+    .where({ id })
+    .update(changes)
+    .then(res => {
+      return findById(id);
+    })
 }

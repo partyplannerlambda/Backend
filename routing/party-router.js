@@ -44,7 +44,7 @@ router.put('/:id', async (req, res) => {
 	try {
 		const party = await Parties.update(req.params.id, req.body);
 		if (party) {
-			res.status(200).json({ message: 'Party updated' });
+			res.status(200).json(party);
 		} else {
 			res.status(404).json({ message: 'Party could not be found' });
 		}
