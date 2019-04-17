@@ -25,7 +25,6 @@ server.use(
 	},
 	shoppingRouter
 );
-
 server.use(
 	'/parties/:id/todo/',
 	restricted,
