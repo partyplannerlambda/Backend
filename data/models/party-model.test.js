@@ -115,4 +115,30 @@ describe('Party Model', () => {
 			expect(allOfThem).toHaveLength(2);
 		});
 	});
+
+	describe('update', () => {
+		it('update 1 party in database', async () => {
+			const newParty1 = await Party.add({ user_id: 1, party_name: 'B-day' });
+			const newParty2 = await Party.add({ user_id: 1, party_name: 'X-mas' });
+			const updateParty = await Party.update(1, {
+				budget: 500,
+				date: null,
+				id: 1,
+				n_of_guests: 20,
+				party_name: 'B-day',
+				theme: 'Golden',
+				user_id: 1
+			});
+			const findParty = await Party.findById(1);
+			expect(findParty).toEqual({
+				budget: 500,
+				date: null,
+				id: 1,
+				n_of_guests: 20,
+				party_name: 'B-day',
+				theme: 'Golden',
+				user_id: 1
+			});
+		});
+	});
 });
