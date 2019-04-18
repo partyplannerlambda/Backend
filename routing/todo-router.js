@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 	const partyID = req.id;
 	try {
 		const todo = await Todo.add(req.body);
-		if (todo && `${item.party_id}` === partyID) {
+		if (todo) {
 			res.status(201).json(todo);
 		} else {
 			res.status(404).json({ message: 'To do item not found' });
