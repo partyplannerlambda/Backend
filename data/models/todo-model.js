@@ -10,7 +10,8 @@ module.exports = {
 };
 
 function find() {
-	return db('todo_list');
+	const party_id = id;
+	return db('todo_list').where({ party_id });
 }
 
 function findBy(filter) {

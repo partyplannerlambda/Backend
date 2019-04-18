@@ -5,7 +5,7 @@ const Todo = require('../data/models/todo-model');
 // GET --> /todo
 router.get('/', async (req, res) => {
 	try {
-		const todo = await Todo.find();
+		const todo = await Todo.find(req.id);
 		res.status(200).json(todo);
 	} catch (err) {
 		console.log(err);
@@ -15,9 +15,10 @@ router.get('/', async (req, res) => {
 
 // GET --> /todo/:id
 router.get('/:id', async (req, res) => {
+	const partyID = req.id;
 	try {
 		const todo = await Todo.findById(req.params.id);
-		if (todo) {
+		if (todo && `${item.party_id}` === partyID) {
 			res.status(200).json(todo);
 		} else {
 			res.status(404).json({ message: 'To do item not found' });
@@ -29,9 +30,14 @@ router.get('/:id', async (req, res) => {
 
 // POST --> /todo
 router.post('/', async (req, res) => {
+	const partyID = req.id;
 	try {
 		const todo = await Todo.add(req.body);
-		res.status(201).json(todo);
+		if (todo && `${item.party_id}` === partyID) {
+			res.status(201).json(todo);
+		} else {
+			res.status(404).json({ message: 'To do item not found' });
+		}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -40,6 +46,7 @@ router.post('/', async (req, res) => {
 
 //PUT --> /todo/id
 router.put('/:id', async (req, res) => {
+	req.id !== req.body.party_id ? res.status(403).json({ message: 'Denied: Invalid Item' }) : null;
 	try {
 		const todo = await Todo.update(req.params.id, req.body);
 		if (todo) {
