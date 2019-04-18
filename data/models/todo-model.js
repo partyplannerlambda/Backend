@@ -9,8 +9,9 @@ module.exports = {
 	update
 };
 
-function find() {
-	return db('todo_list');
+function find(id) {
+	const party_id = id;
+	return db('todo_list').where({ party_id });
 }
 
 function findBy(filter) {
