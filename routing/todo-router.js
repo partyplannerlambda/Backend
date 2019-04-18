@@ -46,7 +46,6 @@ router.post('/', async (req, res) => {
 
 //PUT --> /todo/id
 router.put('/:id', async (req, res) => {
-	req.id !== req.body.party_id ? res.status(403).json({ message: 'Denied: Invalid Item' }) : null;
 	try {
 		const todo = await Todo.update(req.params.id, req.body);
 		if (todo) {
