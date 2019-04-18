@@ -9,7 +9,7 @@ module.exports = {
 	update
 };
 
-function find() {
+function find(id) {
 	const party_id = id;
 	return db('todo_list').where({ party_id });
 }
