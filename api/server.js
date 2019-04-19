@@ -36,7 +36,7 @@ server.use(
 );
 
 server.get('/', (req, res) => {
-	res.send("It's alive!");
+	res.send('Alive!');
 });
 
 module.exports = server;

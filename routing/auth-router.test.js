@@ -1,7 +1,15 @@
 const authRouter = require('../api/server');
 const request = require('supertest');
+const db = require('../data/dbConfig.js');
 
 describe('auth-router', () => {
+	beforeEach(async () => {
+		await db('users').truncate();
+	});
+
+	afterEach(async () => {
+		await db('users').truncate();
+	});
 	describe('POST /register endpoint', () => {
 		it('returns the right response status', () => {
 			const newUser = { username: 'test555', password: 'test' };
