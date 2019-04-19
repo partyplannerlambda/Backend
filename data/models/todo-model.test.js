@@ -26,7 +26,7 @@ describe('To do List Model', () => {
 	describe('find', () => {
 		it('find todo in database', async () => {
 			const newtodo = await Todo.add({ party_id: 1, item: 'rent place', completed: false });
-			const findtodo = await Todo.find();
+			const findtodo = await Todo.find(1);
 			expect(findtodo).toEqual([
 				{
 					id: 1,
@@ -39,7 +39,7 @@ describe('To do List Model', () => {
 		it('find 2 parties after adding them to the database', async () => {
 			const newtodo1 = await Todo.add({ party_id: 1, item: 'rent place', completed: false });
 			const newtodo2 = await Todo.add({ party_id: 1, item: 'do shopping', completed: false });
-			const findtodo = await Todo.find();
+			const findtodo = await Todo.find(1);
 			expect(findtodo).toEqual([
 				{
 					id: 1,
